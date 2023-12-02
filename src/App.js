@@ -1,4 +1,3 @@
-import ExpensesFilter from "./components/ExpensesFilter/ExpensesFilter";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 import { useState } from "react";
@@ -26,22 +25,16 @@ const DUMMY_EXPENSES = [
 ]
 
 const App = () => {
-  const [year, setFilteredYear] = useState('')
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES)
 
   const addExpenseHandler = expense => {
     setExpenses(previousExpenses => [expense, ...previousExpenses])
   }
 
-  const filterChangeHandler = filterValue => {
-    setFilteredYear(filterValue)
-  }
-
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <ExpensesFilter onFilterChange={filterChangeHandler} />
-      <Expenses expenseItems={expenses} filteredYear={year} />
+      <Expenses expenseItems={expenses} />
     </div>
   );
 }
